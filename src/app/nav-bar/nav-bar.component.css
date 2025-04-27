@@ -1,0 +1,24 @@
+img {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
+
+ul li {
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+ul li:hover {
+  background-color: #dee2e6;
+}
+.active{
+  font-weight: bold;
+  color: #007bff;
+}
+h1{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+}
