@@ -16,6 +16,9 @@ ul li:hover {
   background-color: #444;
 }
 
+.active{
+  font-weight: bold;
+}
 
 
 h1 {
@@ -37,5 +40,5 @@ h1 {
 }
 
 .text-light-nav a:hover {
-  color: #ff1e1e;
+  color: #d61919;
 }
