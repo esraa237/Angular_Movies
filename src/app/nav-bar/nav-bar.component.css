@@ -8,6 +8,7 @@ ul li {
   cursor: pointer;
   padding: 6px 10px;
   border-radius: 6px;
+  font-size: 20px;
   transition: background-color 0.3s ease;
 }
 
@@ -15,10 +16,7 @@ ul li:hover {
   background-color: #444;
 }
 
-.active {
-  font-weight: bold;
-  color: #1e90ff;
-}
+
 
 h1 {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -39,5 +37,5 @@ h1 {
 }
 
 .text-light-nav a:hover {
-  color: #1e90ff;
+  color: #ff1e1e;
 }
