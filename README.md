@@ -3,94 +3,97 @@
 
 # MovieDB Angular App 🎬
 
-This project uses **The Movie Database (TMDB) API** to display trending movies, people, TV shows, and more!
+This project is a **Single Page Application (SPA)** built with **Angular** that uses **The Movie Database (TMDB) API** to display trending movies, TV shows, and people.
 
-Users must log in to fetch data using a secure token, and can explore details for each item.
+Users must log in to retrieve a token and access the API securely.
+
+---
 
 ## Features ✨
 
-* **Navbar** with 4 main pages:
-  * **List Page** : Displays trending content (movies, TV shows, people).
-  * **People Page** : Displays popular people.
-  * **Movies Page** : Displays trending movies.
-  * **TV Page** : Displays trending TV shows.
+* **Single Page Application (SPA)** experience — no full-page reloads.
+* **Navbar** with 4 main sections:
+  * **List** : Displays all trending (movies, TV shows, and people).
+  * **People** : Displays popular people.
+  * **Movies** : Displays trending movies.
+  * **TV** : Displays trending TV shows.
 * **Authentication** :
-* User must log in first to retrieve a token.
-* Token is used to access protected API endpoints.
-* **Card View** :
-
-  Each item card shows:
-
-* Image (Poster/Profile)
-* Title/Name
-* Rating
-* Short description (if available)
+* User must log in to get a token.
+* Token is required to access TMDB API endpoints.
+* **Card Design** :
+* Each item card shows an image, title, rating, and a short description (if available).
 * **Details Page** :
-* Clicking on any card navigates to a detailed view of the selected item.
-* Details include extended information like overview, release date, language, and more.
+* Clicking a card opens a detailed view of that item inside the app without reloading.
+* **Dark Theme** :
+* The entire application uses a dark, modern, cinematic theme.
+
+---
 
 ## API Reference 🔗
 
-* Main API documentation: [TMDB API Docs](https://developer.themoviedb.org/reference/intro/getting-started)
+* [TMDB API Documentation](https://developer.themoviedb.org/reference/intro/getting-started)
 * Example endpoint for trending data:
 
   ```
   https://api.themoviedb.org/3/trending/all/{time_window}
   ```
 
-## How it works 🚀
-
-1. **User Authentication** :
-
-* User logs in and receives a token.
-* All further API requests are authenticated using the token.
-
-1. **Fetching Data** :
-
-* Trending content, people, movies, and TV shows are fetched dynamically using TMDB endpoints.
-* Each page dynamically lists relevant items.
-
-1. **Navigation** :
-
-* Responsive Navbar links to different sections.
-* Clicking any card leads to a dedicated details page.
-
-1. **Dark Theme** :
-
-* Modern dark UI for a clean, cinematic look.
+---
 
 ## Technologies Used 🛠️
 
-* **Angular** for frontend framework
-* **TypeScript** for robust and type-safe development
-* **Bootstrap 5** for responsive styling
-* **TMDB API** for real-world data
-* **FontAwesome** for icons
+* **Angular** — Frontend framework
+* **TypeScript** — For type-safe JavaScript
+* **Bootstrap 5** — For responsive UI design
+* **FontAwesome** — For icons
+* **TMDB API** — For real-world movie and TV data
 
-## Project Setup ⚙️
+---
+
+## Getting Started 🚀
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-repo/moviedb-app.git
+   git clone https://github.com/your-repo/moviedb-spa.git
    ```
-2. Navigate to the project directory:
+2. Navigate into the project directory:
 
    ```bash
-   cd moviedb-app
+   cd moviedb-spa
    ```
 3. Install dependencies:
 
    ```bash
    npm install
    ```
-4. Start the development server:
+4. Start the Angular development server:
 
    ```bash
    ng serve
    ```
-5. Open your browser and navigate to:
+5. Visit the app in your browser:
 
    ```
    http://localhost:4200
    ```
+
+---
+
+## Routes Overview 📚
+
+| Route Path  | Description                                                  |
+| ----------- | ------------------------------------------------------------ |
+| `/list`   | Display all trending content                                 |
+| `/people` | Display popular people                                       |
+| `/movie`  | Display trending movies                                      |
+| `/tv`     | Display trending TV shows                                    |
+| `/:id`    | Display detailed view of an item (movie, tv show, or person) |
+
+---
+
+## Notes 📚
+
+* **Single Page Navigation** is handled with Angular Router.
+* **RouterLink** and **RouterLinkActive** are used for smooth navigation between pages without reloads.
+* **Authorization Token** is necessary to interact with TMDB API.
