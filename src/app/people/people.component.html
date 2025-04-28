@@ -1,1 +1,60 @@
-<p>people works!</p>
+@if(!people){
+  <h1 class="">Loading................</h1>
+}
+<div>
+  <h1 class="text-center my-4 fw-bold ">Popular People</h1>
+  <div class="d-flex flex-wrap justify-content-center gap-3">
+  @for (item of people; track $index) {
+      <div class="card">
+        <img src="https://image.tmdb.org/t/p/w500/{{item.profile_path}}" alt="">
+        <h5 class="card-title">{{ item.name }}</h5>
+        <p class="card-text flex-grow-1 d-flex justify-content-between"><span>Role:</span>
+          <span>
+          @if(item.known_for_department==='Acting'){
+            Actor
+          }
+          @else if(item.known_for_department=='Sound'){
+            Singer 
+          }
+        </span>
+        </p>
+        <p class="card-text text-muted justify-content-between d-flex"><span>popularity: </span><span> {{ item.popularity|number:'.0-1' }}</span></p>
+        <a class="btn btn-primary" (click)="getDetails(item.id)" routerLink="{{item.id}}">More</a>
+      </div>
+    }
+  </div>
+  @if(selectedOne){
+    <div #details class="details-container">
+      <div class="details-card position-relative">
+        <div class="details-card-header text-center">
+        </div>
+        <div class="row g-2 d-flex justify-content-center  mt-2">
+          <div class="col-md-4 me-4">
+            <img class="img-fluid rounded-start w-100" [src]="'https://image.tmdb.org/t/p/w500/' + selectedOne.profile_path" alt="{{ selectedOne.name }}">
+          </div>
+          <div class="col-md-7">
+            <h2 class="fw-bold mt-3 mb-2">{{ selectedOne.name}}</h2>
+            <div class="details-card-body flex-grow-1">
+              <strong>Details: </strong>
+              <p class="details-card-text mt-2">Gender: {{ selectedOne.gender==1?"Woman":"Man" }}</p>
+              <p class="card-text flex-grow-1"><span>Role: </span>
+                <span>
+                  @if(selectedOne.known_for_department==='Acting'){
+                    Actor
+                  }
+                  @else if(selectedOne.known_for_department=='Sound'){
+                    Singer 
+                  }
+                </span>
+              </p>
+              <p class="card-text text-muted"><span>popularity: </span><span> {{ selectedOne.popularity |number:'.0-1'}}</span></p>
+              <!-- <p class="details-card-text"><small class="text-muted">Language: {{ trend.original_language }}</small></p> -->
+              <!-- <p class="details-card-text"><small class="text-muted">Rating: {{ trend.vote_average|number:'1.0-1' }} </small> <i class="fa-solid fa-star fa-fade" style="color: #FFD43B;"></i> </p> -->
+            </div>
+          </div>
+        </div>
+        <a routerLink="/people" class="position-absolute w-25 end-0 bottom-0 btn btn-dark m-3" (click)="closeDetails()">close</a>
+      </div> 
+    </div> 
+  }
+</div>

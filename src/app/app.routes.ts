@@ -1,10 +1,8 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ListComponent } from './list/list.component';
-import { PeopleComponent } from './people/people.component';
-import { TvComponent } from './tv/tv.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { ListOneComponent } from './list-one/list-one.component';
+
 
 
 export const routes: Routes = [
@@ -13,8 +11,14 @@ export const routes: Routes = [
   { path: 'list', component: ListComponent,title:'Trends',children:[
     {path:':id',component:ListOneComponent,title:'Details'},
   ]},
-  { path: 'people', component: PeopleComponent,title:'People' },
-  { path:'tv', component: TvComponent,title:'TV' },
-  { path:'movie', component: TvComponent,title:'Movie' },
-  {path:'**', component:NotFoundComponent,title:'404 Not Found'}
+  { path:'people', loadComponent: () => import('./people/people.component').then(m => m.PeopleComponent),title:'People',children:[
+    { path: ':id', component: ListOneComponent,title:'Details' } 
+  ]},
+  { path:'movie', loadComponent: () => import('./movie/movie.component').then(m => m.MovieComponent),title:'Movie',children:[
+    { path: ':id', component: ListOneComponent,title:'Details' } 
+  ]},
+  { path:'tv', loadComponent: () => import('./tv/tv.component').then(m => m.TvComponent),title:'TV Shows',children:[
+    { path: ':id', component: ListOneComponent,title:'Details' } 
+  ]},
+  {path:'**',loadComponent: () => import('./not-found/not-found.component').then(m => m.NotFoundComponent),title:'Not Found'},
 ];
