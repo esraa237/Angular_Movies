@@ -1,59 +1,96 @@
-# Api
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.7.
+---
 
-## Development server
+# MovieDB Angular App 🎬
 
-To start a local development server, run:
+This project uses **The Movie Database (TMDB) API** to display trending movies, people, TV shows, and more!
 
-```bash
-ng serve
-```
+Users must log in to fetch data using a secure token, and can explore details for each item.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Features ✨
 
-## Code scaffolding
+* **Navbar** with 4 main pages:
+  * **List Page** : Displays trending content (movies, TV shows, people).
+  * **People Page** : Displays popular people.
+  * **Movies Page** : Displays trending movies.
+  * **TV Page** : Displays trending TV shows.
+* **Authentication** :
+* User must log in first to retrieve a token.
+* Token is used to access protected API endpoints.
+* **Card View** :
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+  Each item card shows:
 
-```bash
-ng generate component component-name
-```
+* Image (Poster/Profile)
+* Title/Name
+* Rating
+* Short description (if available)
+* **Details Page** :
+* Clicking on any card navigates to a detailed view of the selected item.
+* Details include extended information like overview, release date, language, and more.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## API Reference 🔗
 
-```bash
-ng generate --help
-```
+* Main API documentation: [TMDB API Docs](https://developer.themoviedb.org/reference/intro/getting-started)
+* Example endpoint for trending data:
 
-## Building
+  ```
+  https://api.themoviedb.org/3/trending/all/{time_window}
+  ```
 
-To build the project run:
+## How it works 🚀
 
-```bash
-ng build
-```
+1. **User Authentication** :
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+* User logs in and receives a token.
+* All further API requests are authenticated using the token.
 
-## Running unit tests
+1. **Fetching Data** :
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+* Trending content, people, movies, and TV shows are fetched dynamically using TMDB endpoints.
+* Each page dynamically lists relevant items.
 
-```bash
-ng test
-```
+1. **Navigation** :
 
-## Running end-to-end tests
+* Responsive Navbar links to different sections.
+* Clicking any card leads to a dedicated details page.
 
-For end-to-end (e2e) testing, run:
+1. **Dark Theme** :
 
-```bash
-ng e2e
-```
+* Modern dark UI for a clean, cinematic look.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Technologies Used 🛠️
 
-## Additional Resources
+* **Angular** for frontend framework
+* **TypeScript** for robust and type-safe development
+* **Bootstrap 5** for responsive styling
+* **TMDB API** for real-world data
+* **FontAwesome** for icons
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Project Setup ⚙️
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-repo/moviedb-app.git
+   ```
+2. Navigate to the project directory:
+
+   ```bash
+   cd moviedb-app
+   ```
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+
+   ```bash
+   ng serve
+   ```
+5. Open your browser and navigate to:
+
+   ```
+   http://localhost:4200
+   ```
