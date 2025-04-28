@@ -1,45 +1,65 @@
-<div>
-  <h1 class="text-center my-4 fw-bold ">All Trends</h1>
-  <div class="d-flex flex-wrap justify-content-center gap-3">
-  @for (trend of trendings; track $index) {
-      <div class="card">
-        <img src="https://image.tmdb.org/t/p/w500/{{trend.poster_path}}" alt="">
-        <h5 class="card-title">{{ trend.title }}</h5>
-        <p class="card-text flex-grow-1">{{ trend.overview}}</p>
-        <p class="card-text text-muted justify-content-between d-flex"><span>Rating: </span><span> <i class="fa-solid fa-star fa-fade" style="color: #FFD43B;"></i> {{ trend.vote_average|number:'1.0-1' }}/10</span></p>
-        <a class="btn btn-primary" (click)="getDetails(trend.id)" routerLink="{{trend.id}}">More</a>
+<div class="bg-dark">
+@if(loading){
+  <div class="loading-spinner text-light">
+    <p>Loading...</p>
+    <!-- Spinner Style -->
+    <div class="spinner-border text-light"></div>
+  </div>
+}
+@else{
+  <div class="bg-dark text-white pb-5">
+    <h1 class="text-center pb-4 pt-5 fw-bold text-light">All Trends</h1>
+    <div class="d-flex flex-wrap justify-content-center gap-4">
+      @for (trend of trendings; track $index) {
+        <div class="card text-white">
+          <img src="https://image.tmdb.org/t/p/w500/{{trend.poster_path}}" alt="" class="card-img-top">
+          <h5 class="card-title">{{ trend.title }}</h5>
+          <p class="card-text flex-grow-1">{{ trend.overview}}</p>
+          <p class="card-text text-light justify-content-between d-flex">
+            <span>Rating: </span>
+            <span>
+              <i class="fa-solid fa-star fa-fade" style="color: #FFD43B;"></i>
+              {{ trend.vote_average|number:'1.0-1' }}/10
+            </span>
+          </p>
+          <a class="btn btn-custom" (click)="getDetails(trend.id)" routerLink="{{trend.id}}">More</a>
+        </div>
+      }
+    </div>
+    @if(trend){
+      <div #details class="details-container">
+        <div class="details-card position-relative bg-dark text-white">
+          <div class="details-card-header text-center">
+            @if(trend.title){
+              <h2 class="fw-bold">{{ trend.title }}</h2>
+            }
+            @else {
+              <h2 class="fw-bold">Details</h2>
+            }
+          </div>
+          <div class="row g-2 d-flex justify-content-center mt-2">
+            <div class="col-md-4 me-4">
+              <img class="img-fluid rounded-3 w-100" [src]="'https://image.tmdb.org/t/p/w500/' + trend.poster_path" alt="{{ trend.title }}">
+            </div>
+            <div class="col-md-7">
+              <div class="details-card-body flex-grow-1 mt-1">
+                <strong>Overview: </strong>
+                <p class="details-card-text">{{ trend.overview }}</p>
+                @if(trend.release_date){
+                  <p class="details-card-text"><small class="text-light">Release Date: {{ trend.release_date }}</small></p>
+                }
+                <p class="details-card-text"><small class="text-light">Language: {{ trend.original_language }}</small></p>
+                <p class="details-card-text"><small class="text-light">Rating:  {{ trend.vote_average|number:'1.0-1' }}  </small>
+                  <i class="fa-solid fa-star fa-fade" style="color: #FFD43B;"></i>
+                </p>
+              </div>
+            </div>
+            <a routerLink="/list" class="position-absolute w-25 end-0 bottom-0 btn btn-danger m-5" (click)="closeDetails()">close</a>
+          </div>
+        </div>
       </div>
     }
   </div>
-  @if(trend){
-    <div #details class="details-container">
-      <div class="details-card position-relative">
-        <div class="details-card-header text-center">
-          @if(trend.title){
-            <h2 class="fw-bold">{{ trend.title }}</h2>
-          }
-          @else {
-            <h2 class="fw-bold">Details</h2>
-          }
-        </div>
-      <div class="row g-2 d-flex justify-content-center mt-2">
-        <div class="col-md-4 me-4">
-          <img class="img-fluid rounded-start w-100" [src]="'https://image.tmdb.org/t/p/w500/' + trend.poster_path" alt="{{ trend.title }}">
-        </div>
-        <div class="col-md-7">
-          <div class="details-card-body flex-grow-1">
-            <strong>Overview: </strong>
-            <p class="details-card-text">{{ trend.overview }}</p>
-            @if(trend.release_date){
-              <p class="details-card-text"><small class="text-muted">Release Date: {{ trend.release_date }}</small></p>
-            }
-            <p class="details-card-text"><small class="text-muted">Language: {{ trend.original_language }}</small></p>
-            <p class="details-card-text"><small class="text-muted">Rating:  {{ trend.vote_average|number:'1.0-1' }}  </small>  <i class="fa-solid fa-star fa-fade" style="color: #FFD43B;"></i> </p>
-          </div>
-        </div>
-        <a routerLink="/list" class="position-absolute w-25 end-0 bottom-0 btn btn-dark m-3" (click)="closeDetails()">close</a>
-      </div>
-    </div>
-  </div>
-  }
+}
 </div>
+

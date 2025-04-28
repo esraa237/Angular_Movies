@@ -14,6 +14,7 @@ export class ListComponent implements OnInit, AfterViewInit {
   @ViewChild('details') details!: ElementRef;
   trendings!: Trending[];
   trend!: Trending;
+  loading: boolean = true;
 
   constructor(private _apiservice: ApiService, private router: Router) {}
 
@@ -35,9 +36,11 @@ export class ListComponent implements OnInit, AfterViewInit {
       },
       error: (err) => {
         console.error('Error occurred:', err);
+        this.loading = false;
       },
       complete: () => {
         console.log('Request completed');
+        this.loading = false;
       }
     });
   }

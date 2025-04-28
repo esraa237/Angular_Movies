@@ -1,1 +1,60 @@
-<p>tv works!</p>
+<div class="bg-dark">
+  @if(loading){
+  <div class="loading-spinner text-light">
+    <p>Loading...</p>
+    <!-- Spinner Style -->
+    <div class="spinner-border text-light"></div>
+  </div>
+}
+@else{
+  <div class="bg-dark text-white pb-5">
+    <h1 class="text-center pt-5 pb-4 fw-bold text-light">All Tv Shows</h1>
+    <div class="d-flex flex-wrap justify-content-center gap-4">
+      @for (movie of tvShows; track $index) {
+        <div class="card text-white">
+          <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="" class="card-img-top">
+          <h5 class="card-title ">{{ movie.name }}</h5>
+          <p class="card-text flex-grow-1">{{ movie.overview}}</p>
+          <p class="card-text text-light justify-content-between d-flex">
+            <span>Rating: </span>
+            <span>
+              <i class="fa-solid fa-star fa-fade" style="color: #FFD43B;"></i>
+              {{ movie.vote_average|number:'1.0-1' }}/10
+            </span>
+          </p>
+          <a class="btn btn-custom" (click)="getDetails(movie.id)" routerLink="{{movie.id}}">More</a>
+        </div>
+      }
+    </div>
+    @if(selectedOne){
+      <div #details class="details-container">
+        <div class="details-card position-relative bg-dark text-white">
+          <div class="details-card-header text-center">
+            <h2 class="fw-bold">{{ selectedOne.name }}</h2>
+          </div>
+          <div class="row g-2 d-flex justify-content-center mt-2">
+            <div class="col-md-4 me-4">
+              <img class="img-fluid rounded-start w-100" [src]="'https://image.tmdb.org/t/p/w500/' + selectedOne.poster_path" alt="{{ selectedOne.name }}">
+            </div>
+            <div class="col-md-7">
+              <div class="details-card-body flex-grow-1">
+                <strong>Overview: </strong>
+                <p class="details-card-text">{{ selectedOne.overview }}</p>
+                @if(selectedOne.first_air_date){
+                  <p class="details-card-text"><small class="text-light">Release Date: {{ selectedOne.first_air_date }}</small></p>
+                }
+                <p class="details-card-text"><small class="text-light">Language: {{ selectedOne.original_language }}</small></p>
+                <p class="details-card-text"><small class="text-light">Rating:  {{ selectedOne.vote_average|number:'1.0-1' }}  </small>
+                  <i class="fa-solid fa-star fa-fade" style="color: #FFD43B;"></i>
+                </p>
+              </div>
+            </div>
+            <a routerLink="/tv" class="position-absolute w-25 end-0 bottom-0 btn btn-danger m-5" (click)="closeDetails()">close</a>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+}
+</div>
+

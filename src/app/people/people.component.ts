@@ -17,6 +17,7 @@ export class PeopleComponent {
   @ViewChild('details') details!: ElementRef;
   people!: People[];
   selectedOne!: People;
+  loading:boolean = true;
 
   constructor(private _apiservice: ApiService) {}
 
@@ -38,9 +39,11 @@ export class PeopleComponent {
       },
       error: (err) => {
         console.error('Error occurred:', err);
+        this.loading = false;  
       },
       complete: () => {
         console.log('Request completed');
+        this.loading = false;
       }
     });
   }
