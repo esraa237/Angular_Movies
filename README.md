@@ -1,14 +1,15 @@
+---
+# 🎬 MovieDesk
+
+> A modern Angular web app to explore trending movies, TV shows, and people — powered by TMDB.
 
 ---
-
-# MovieDB Angular App 🎬
 
 This project is a **Single Page Application (SPA)** built with **Angular** that uses **The Movie Database (TMDB) API** to display trending movies, TV shows, and people.
 
 Users must log in to retrieve a token and access the API securely.
 
 ---
-
 ## Features ✨
 
 * **Single Page Application (SPA)** experience — no full-page reloads.
