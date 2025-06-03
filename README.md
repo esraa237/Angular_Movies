@@ -5,7 +5,7 @@
 
 This project is a **Single Page Application (SPA)** built with **Angular** that uses **The Movie Database (TMDB) API** to display trending movies, TV shows, and people.
 
-Users must log in to retrieve a token and access the API securely.
+
 ---
 ## Demo 🎥
 
@@ -20,8 +20,7 @@ Users must log in to retrieve a token and access the API securely.
   * **Movies** : Displays trending movies.
   * **TV** : Displays trending TV shows.
 * **Authentication** :
-* User must log in to get a token.
-* Token is required to access TMDB API endpoints.
+* Token is required for me to access TMDB API endpoints.
 * **Card Design** :
 * Each item card shows an image, title, rating, and a short description (if available).
 * **Details Page** :
